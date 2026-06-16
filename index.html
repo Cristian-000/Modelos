@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,26 +29,76 @@
             min-height: 100vh;
         }
 
-        .form-container {
+        /* Contenedor principal de dos columnas */
+        .landing-wrapper {
+            display: flex;
             background-color: var(--card-bg);
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+            max-width: 1000px;
             width: 100%;
+            overflow: hidden;
         }
 
-        h1 {
-            text-align: center;
+        /* ----- SECCIÓN DE GALERÍA ----- */
+        .gallery-section {
+            flex: 1;
+            background-color: #faf5ff;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .gallery-section h2 {
             color: var(--primary-color);
-            font-size: 1.5rem;
+            margin-top: 0;
             margin-bottom: 5px;
+            font-size: 1.8rem;
         }
 
-        p.description {
-            text-align: center;
-            font-size: 0.9rem;
+        .gallery-section p {
             color: #6b7280;
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.03);
+        }
+
+        /* Imagen destacada en la grilla */
+        .img-large {
+            grid-column: span 2;
+            height: 200px;
+        }
+
+        /* ----- SECCIÓN DE FORMULARIO ----- */
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            background-color: var(--card-bg);
+        }
+
+        .form-section h1 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-top: 0;
             margin-bottom: 25px;
         }
 
@@ -105,19 +156,20 @@
             cursor: pointer;
         }
 
-        /* Transformando Checkbox en Radial Múltiple */
+        /* Checkbox modificado a Radial Múltiple */
         .service-header input[type="checkbox"] {
             appearance: none;
             -webkit-appearance: none;
             width: 20px;
             height: 20px;
             border: 2px solid var(--border-color);
-            border-radius: 50%; /* Esto lo hace ver radial */
+            border-radius: 50%;
             margin-right: 12px;
             display: grid;
             place-content: center;
             cursor: pointer;
             transition: all 0.2s ease-in-out;
+            flex-shrink: 0;
         }
 
         .service-header input[type="checkbox"]::before {
@@ -144,12 +196,12 @@
 
         .materials-required {
             margin-left: 32px;
-            margin-top: 4px;
+            margin-top: 6px;
             font-size: 0.85rem;
             color: #4b5563;
             background-color: #fee2e2;
-            padding: 6px 10px;
-            border-radius: 4px;
+            padding: 8px 12px;
+            border-radius: 6px;
             border-left: 3px solid var(--alert-color);
         }
 
@@ -162,10 +214,10 @@
             width: 100%;
             background-color: var(--primary-color);
             color: white;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 6px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             transition: background-color 0.3s ease;
@@ -174,83 +226,122 @@
 
         .submit-btn:hover {
             background-color: var(--primary-hover);
+            box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
         }
 
-        /* Responsive */
-        @media (max-width: 480px) {
-            .form-container {
-                padding: 20px;
+        /* Responsive para celulares y tablets pequeñas */
+        @media (max-width: 768px) {
+            .landing-wrapper {
+                flex-direction: column;
+            }
+            .gallery-section {
+                padding: 25px;
+            }
+            .form-section {
+                padding: 25px;
+            }
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-img {
+                height: 120px;
+            }
+            .img-large {
+                height: 160px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="form-container">
-        <h1>Se buscan Modelos</h1>
-        <p class="description">Ayudá a nuestros estudiantes en sus prácticas. Seleccioná los servicios gratuitos que te interesan.</p>
-
-        <form action="#" method="POST">
+    <div class="landing-wrapper">
+        
+        <!-- SECCIÓN DE GALERÍA -->
+        <div class="gallery-section">
+            <h2>Nuestros Trabajos</h2>
+            <p>Súmate como modelo de práctica y ayúdanos a formar a los próximos profesionales del estilismo.</p>
             
-            <div class="form-group">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required>
+            <div class="image-grid">
+                <!-- Imagen Destacada -->
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Resultado de peinado" class="gallery-img img-large">
+                <!-- Imagen Secundaria 1 -->
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f10c5143?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Corte de cabello" class="gallery-img">
+                <!-- Imagen Secundaria 2 -->
+                <img src="https://images.unsplash.com/photo-1600948836101-f9ff16981f11?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Aplicación de color" class="gallery-img">
             </div>
+        </div>
 
-            <div class="form-group">
-                <label for="telefono">Número de Teléfono (WhatsApp)</label>
-                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 099 123 456" required>
-            </div>
+        <!-- SECCIÓN DE FORMULARIO -->
+        <div class="form-section">
+            <h1>Completa tus datos</h1>
 
-            <div class="form-group">
-                <label>Servicios de interés (Puedes elegir varios):</label>
-                <div class="services-group">
-                    
-                    <div class="service-option">
-                        <label class="service-header">
-                            <input type="checkbox" name="servicios" value="corte">
-                            <span class="service-name">Corte de Cabello</span>
-                        </label>
-                        <div class="materials-required materials-none">
-                            <strong>Materiales:</strong> Ninguno, nosotros ponemos todo.
-                        </div>
-                    </div>
-
-                    <div class="service-option">
-                        <label class="service-header">
-                            <input type="checkbox" name="servicios" value="color">
-                            <span class="service-name">Aplicación de Tinte / Color</span>
-                        </label>
-                        <div class="materials-required">
-                            <strong>Materiales requeridos:</strong> Debes traer 1 o 2 pomos de la tintura de tu elección.
-                        </div>
-                    </div>
-
-                    <div class="service-option">
-                        <label class="service-header">
-                            <input type="checkbox" name="servicios" value="decoloracion">
-                            <span class="service-name">Decoloración / Mechas</span>
-                        </label>
-                        <div class="materials-required">
-                            <strong>Materiales requeridos:</strong> Traer polvo decolorante y revelador (agua oxigenada).
-                        </div>
-                    </div>
-
-                    <div class="service-option">
-                        <label class="service-header">
-                            <input type="checkbox" name="servicios" value="peinado">
-                            <span class="service-name">Brushing / Peinado</span>
-                        </label>
-                        <div class="materials-required materials-none">
-                            <strong>Materiales:</strong> Ninguno. Venir con el cabello limpio.
-                        </div>
-                    </div>
-
+            <form action="#" method="POST">
+                
+                <div class="form-group">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required>
                 </div>
-            </div>
 
-            <button type="submit" class="submit-btn">Enviar Postulación</button>
-        </form>
+                <div class="form-group">
+                    <label for="telefono">Número de Teléfono (WhatsApp)</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: 099 123 456" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Servicios que te interesan:</label>
+                    <div class="services-group">
+                        
+                        <!-- Servicio 1 -->
+                        <div class="service-option">
+                            <label class="service-header">
+                                <input type="checkbox" name="servicios" value="corte">
+                                <span class="service-name">Corte de Cabello</span>
+                            </label>
+                            <div class="materials-required materials-none">
+                                <strong>Materiales:</strong> Ninguno, nosotros ponemos todo.
+                            </div>
+                        </div>
+
+                        <!-- Servicio 2 -->
+                        <div class="service-option">
+                            <label class="service-header">
+                                <input type="checkbox" name="servicios" value="color">
+                                <span class="service-name">Aplicación de Tinte / Color</span>
+                            </label>
+                            <div class="materials-required">
+                                <strong>Materiales requeridos:</strong> Traer 1 o 2 pomos de la tintura de tu elección.
+                            </div>
+                        </div>
+
+                        <!-- Servicio 3 -->
+                        <div class="service-option">
+                            <label class="service-header">
+                                <input type="checkbox" name="servicios" value="decoloracion">
+                                <span class="service-name">Decoloración / Mechas</span>
+                            </label>
+                            <div class="materials-required">
+                                <strong>Materiales requeridos:</strong> Traer polvo decolorante y revelador (agua oxigenada).
+                            </div>
+                        </div>
+
+                        <!-- Servicio 4 -->
+                        <div class="service-option">
+                            <label class="service-header">
+                                <input type="checkbox" name="servicios" value="peinado">
+                                <span class="service-name">Brushing / Peinado</span>
+                            </label>
+                            <div class="materials-required materials-none">
+                                <strong>Materiales:</strong> Ninguno. Venir con el cabello limpio.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Postulación</button>
+            </form>
+        </div>
+
     </div>
 
 </body>
