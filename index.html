@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postulación de Modelos - Academia de Peluquería</title>
+    <style>
+        :root {
+            --primary-color: #8b5cf6;
+            --primary-hover: #7c3aed;
+            --bg-color: #f3f4f6;
+            --text-color: #1f2937;
+            --card-bg: #ffffff;
+            --border-color: #d1d5db;
+            --alert-color: #ef4444;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: var(--card-bg);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        p.description {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="tel"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .services-group {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f9fafb;
+        }
+
+        .service-option {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .service-option:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Transformando Checkbox en Radial Múltiple */
+        .service-header input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 50%; /* Esto lo hace ver radial */
+            margin-right: 12px;
+            display: grid;
+            place-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .service-header input[type="checkbox"]::before {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            transform: scale(0);
+            transition: 120ms transform ease-in-out;
+            box-shadow: inset 1em 1em var(--primary-color);
+        }
+
+        .service-header input[type="checkbox"]:checked {
+            border-color: var(--primary-color);
+        }
+
+        .service-header input[type="checkbox"]:checked::before {
+            transform: scale(1);
+        }
+
+        .service-name {
+            font-weight: 500;
+        }
+
+        .materials-required {
+            margin-left: 32px;
+            margin-top: 4px;
+            font-size: 0.85rem;
+            color: #4b5563;
+            background-color: #fee2e2;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--alert-color);
+        }
+
+        .materials-none {
+            background-color: #dcfce7;
+            border-left: 3px solid #22c55e;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Se buscan Modelos</h1>
+        <p class="description">Ayudá a nuestros estudiantes en sus prácticas. Seleccioná los servicios gratuitos que te interesan.</p>
+
+        <form action="#" method="POST">
+            
+            <div class="form-group">
+                <label for="nombre">Nombre Completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ej: Ana Pérez" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Número de Teléfono (WhatsApp)</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: 099 123 456" required>
+            </div>
+
+            <div class="form-group">
+                <label>Servicios de interés (Puedes elegir varios):</label>
+                <div class="services-group">
+                    
+                    <div class="service-option">
+                        <label class="service-header">
+                            <input type="checkbox" name="servicios" value="corte">
+                            <span class="service-name">Corte de Cabello</span>
+                        </label>
+                        <div class="materials-required materials-none">
+                            <strong>Materiales:</strong> Ninguno, nosotros ponemos todo.
+                        </div>
+                    </div>
+
+                    <div class="service-option">
+                        <label class="service-header">
+                            <input type="checkbox" name="servicios" value="color">
+                            <span class="service-name">Aplicación de Tinte / Color</span>
+                        </label>
+                        <div class="materials-required">
+                            <strong>Materiales requeridos:</strong> Debes traer 1 o 2 pomos de la tintura de tu elección.
+                        </div>
+                    </div>
+
+                    <div class="service-option">
+                        <label class="service-header">
+                            <input type="checkbox" name="servicios" value="decoloracion">
+                            <span class="service-name">Decoloración / Mechas</span>
+                        </label>
+                        <div class="materials-required">
+                            <strong>Materiales requeridos:</strong> Traer polvo decolorante y revelador (agua oxigenada).
+                        </div>
+                    </div>
+
+                    <div class="service-option">
+                        <label class="service-header">
+                            <input type="checkbox" name="servicios" value="peinado">
+                            <span class="service-name">Brushing / Peinado</span>
+                        </label>
+                        <div class="materials-required materials-none">
+                            <strong>Materiales:</strong> Ninguno. Venir con el cabello limpio.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Enviar Postulación</button>
+        </form>
+    </div>
+
+</body>
+</html>
